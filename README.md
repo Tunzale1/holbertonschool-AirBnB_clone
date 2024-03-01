@@ -1,5 +1,6 @@
 # AirBnB clone - The console
 - The goal of the project is to deploy on your server a simple copy of the AirBnB website.
+- The AirBnB Console is a command-line application designed to manage AirBnB-like objects. It provides a user-friendly interface for creating, displaying, updating, and deleting instances of various classes such as BaseModel, User, State, City, Amenity, Place, and Review.
 ### Concepts to learn
 - Unittest - and please work all together on tests cases
 - Python packages concept page

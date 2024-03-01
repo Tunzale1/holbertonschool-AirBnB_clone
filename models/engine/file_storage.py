@@ -32,6 +32,7 @@ class FileStorage:
 
     def reload(self):
         from models.base_model import BaseModel
+        from models.user import User
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r") as f:
                 dicts = json.load(f) 
