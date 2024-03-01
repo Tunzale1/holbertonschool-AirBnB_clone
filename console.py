@@ -8,7 +8,8 @@ from models.user import User
 class HBNBCommand(cmd.Cmd):
     """ hbnb """
     prompt = '(hbnb) '
-    __my_class = ["BaseModel", "User"]
+    __my_class = ["BaseModel", "User", "Place",
+            "State", "City", "Amenity", "Review"]
     
     def do_quit(self, arg):
         """ Quit console """

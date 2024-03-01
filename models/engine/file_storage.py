@@ -22,7 +22,7 @@ class FileStorage:
     def new(self, obj):
         key = f"{type(obj).__name__}.{obj.id}"
         self.__objects[key] = obj
-    
+
     def save(self):
         serialized_object = {}
         for key, value in self.__objects.items():
@@ -33,6 +33,12 @@ class FileStorage:
     def reload(self):
         from models.base_model import BaseModel
         from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r") as f:
                 dicts = json.load(f) 
