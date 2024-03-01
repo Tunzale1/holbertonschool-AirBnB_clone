@@ -14,7 +14,7 @@ class BaseModel:
         self.created_at = datetime.utcnow()
         self.updated_at = self.created_at
 
-        if kwargs is not None:
+        if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key in ("created_at", "updated_at"):
