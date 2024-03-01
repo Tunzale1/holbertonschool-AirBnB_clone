@@ -26,13 +26,13 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """ create class instance """
         args = arg.split()
-        if not args:
+        if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.__my_class:
             print("** class doesn't exist **")
         else:
             instance = eval(args[0])()
-            storage.new(instance)
+            instance.save()
             print(instance.id)
             
     def do_show(self, arg):
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             objects = storage.all()
             key = f"{args[0]}.{args[1]}"
-            if key in objects:
+            if key in objects.keys():
                 del objects[key]
                 storage.save()
             else:
