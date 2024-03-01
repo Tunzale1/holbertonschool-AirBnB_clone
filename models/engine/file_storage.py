@@ -4,7 +4,6 @@
 
 import json
 import os
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -31,8 +30,9 @@ class FileStorage:
             json.dump(serialized_object, f)
 
     def reload(self):
+        from models.base_model import BaseModel  
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r") as f:
                 for key, value in json.load(f).items():
-                    value = eval(key.split(".")[0])(**value)
-                    self.__objects[key] = value
+                    instance = BaseModel(**value)
+                    self.__objects[key] = instance
