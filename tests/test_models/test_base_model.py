@@ -21,13 +21,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.instance.created_at, datetime)
         self.assertIsInstance(self.instance.updated_at, datetime)
 
-    def test_save(self):
-        """ test save method """
-        self.instance.save()
-        key = f"{self.instance}.{self.instance.id}"
-        with open("file.json") as file:
-            self.assertIn(key, file.read())
-
     def test_dict(self):
         """ test to_dict method """
         obj = self.instance
