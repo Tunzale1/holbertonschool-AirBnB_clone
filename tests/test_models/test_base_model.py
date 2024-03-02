@@ -4,13 +4,15 @@
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
-import models
 
 
 class TestBaseModel(unittest.TestCase):
     """ test BaseModel class """
     def setUp(self):
         self.instance = BaseModel()
+
+    def test_str(self):
+        self.assertIn(self.instance.id, str(self.instance))
 
     def test_init(self):
         """ test init """
@@ -32,9 +34,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(dic['updated_at'], obj.updated_at.isoformat())
 
     def test_save(self):
-        instance = BaseModel()
-        instance.save()
-        obj = "BaseModel." + instance.id
+        self.instance.save()
+        obj = "BaseModel." + self.instance.id
         with open("file.json", "r") as my_file:
             self.assertIn(obj, my_file.read())
 
