@@ -31,10 +31,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(dic['created_at'], obj.created_at.isoformat())
         self.assertEqual(dic['updated_at'], obj.updated_at.isoformat())
 
-    def save(self):
-        """ Update the update_at """
-        self.updated_at = datetime.now()
-        models.storage.save()
+    def test_save(self):
+        instance = BaseModel()
+        instance.save()
+        obj = "BaseModel." + instance.id
+        with open("file.json", "r") as my_file:
+            self.assertIn(obj, my_file.read())
 
 
 if __name__ == '__main__':
