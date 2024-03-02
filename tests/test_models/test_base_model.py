@@ -4,6 +4,7 @@
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
+import models
 
 
 class TestBaseModel(unittest.TestCase):
@@ -29,6 +30,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(dic['id'], obj.id)
         self.assertEqual(dic['created_at'], obj.created_at.isoformat())
         self.assertEqual(dic['updated_at'], obj.updated_at.isoformat())
+
+    def save(self):
+        """ Update the update_at """
+        self.updated_at = datetime.now()
+        models.storage.save()
 
 
 if __name__ == '__main__':
