@@ -1,15 +1,12 @@
 #!/usr/bin/python3
 '''FileStorage class'''
 
-
 import json
-import os  
-
+import os
 
 
 class FileStorage:
-    '''serializes objects to a JSONfile and deserializes JSONfile to objects''' 
-
+    '''serializes objects to a JSONfile and deserializes JSONfile to objects'''
     __file_path = "file.json"
     __objects = {}
 
@@ -41,7 +38,7 @@ class FileStorage:
 
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r") as f:
-                dicts = json.load(f) 
+                dicts = json.load(f)
                 for key, value in dicts.items():
                     class_name = key.split(".")[0]
                     cls = eval(class_name)
